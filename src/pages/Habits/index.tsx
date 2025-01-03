@@ -11,6 +11,7 @@ interface Habit {
   name: string;
   category: 'Health' | 'Productivity' | 'Finance' | 'Relationships' | 'Learning' | 'Spiritual/Mental';
   description: string;
+  color: string;
 }
 
 export function Habits() {
@@ -130,11 +131,16 @@ export function Habits() {
   return (
     <div className="min-h-screen bg-gray-50 pb-16">
       <div className="max-w-lg mx-auto px-4 py-8 space-y-6">
-        <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-gray-900">Habits</h2>
-          <Button onClick={handleAddHabit} disabled={isLoading}>
-            Add Habit
-          </Button>
+        <div className="flex flex-col space-y-4">
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl font-bold text-gray-900">Habits</h2>
+            <Button onClick={handleAddHabit} disabled={isLoading}>
+              Add Habit
+            </Button>
+          </div>
+          <h5 className="text-gray-500 text-sm">
+            Your path to positive routines. Add new habits, track your daily progress. Building consistency is the key to unlocking your full potential. 🌱
+          </h5>
         </div>
 
         {showForm && (

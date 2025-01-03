@@ -59,7 +59,7 @@ import { useState, useEffect } from 'react';
         setEditPost(null);
       };
 
-      const handleSavePost = async (newPost: Post) => {
+      const handleSavePost = async (newPost: { title: string; caption: string; image_url?: string }) => {
         if (!user) return;
 
         try {
@@ -78,7 +78,7 @@ import { useState, useEffect } from 'react';
 
             if (error) throw error;
 
-            setPosts(posts.map(post => post.id === editPost.id ? data : post));
+            setPosts(posts.map(post => ({...post, ...data})));
           } else {
             // Create new post
             const { data, error } = await supabase
@@ -124,11 +124,14 @@ import { useState, useEffect } from 'react';
       return (
         <div className="min-h-screen bg-gray-50 pb-16">
           <div className="max-w-lg mx-auto px-4 py-8 space-y-6">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-gray-900">FlexBook</h2>
-              <Button onClick={handleAddPost}>Add Post</Button>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-gray-900">FlexBook</h2>
+                <Button onClick={handleAddPost}>Add Post</Button>
+              </div>
+              <h5 className="text-gray-500 text-sm space-y-2">Upload photos and write captions to document your milestones, express gratitude, and reflect on your personal evolution.✨</h5>
             </div>
-
+    
             {showForm && (
               <FlexBookForm
                 onCancel={handleCancelForm}
@@ -136,8 +139,8 @@ import { useState, useEffect } from 'react';
                 initialPost={editPost}
               />
             )}
-
-            <div className="space-y-4">
+    
+            <div className="space-y-2">
               {posts.map((post) => (
                 <FlexBookPost
                   key={post.id}

@@ -141,8 +141,9 @@ export function Stats() {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-16">
-      <div className="max-w-lg mx-auto px-4 py-8 space-y-6">
+      <div className="max-w-lg mx-auto px-4 py-8 space-y-4">
         <h2 className="text-2xl font-bold text-gray-900">Statistics</h2>
+        <h5 className="text-gray-500 text-sm mt-1">Gain insights into your journey and discover areas for improvement. Visualize your progress with detailed charts and graphs. 📈</h5>
         {habitStats.map((stats) => (
           <HabitStatistics key={stats.habit_id} stats={stats} />
         ))}
