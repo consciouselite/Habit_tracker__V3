@@ -48,7 +48,7 @@ export function GoalList({ onEdit, onDelete }: GoalListProps) {
   };
 
   const getDaysRemaining = (expiryDate: string) => {
-    return differenceInDays(new Date(), new Date(expiryDate));
+    return differenceInDays(new Date(expiryDate), new Date());
   };
 
   const getStatusColor = (daysRemaining: number) => {

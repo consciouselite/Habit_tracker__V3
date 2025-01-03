@@ -566,3 +566,13 @@ ADD COLUMN expiry_date DATE NOT NULL DEFAULT (CURRENT_DATE + INTERVAL '30 days')
 UPDATE goals
 SET expiry_date = created_at::date + INTERVAL '30 days'
 WHERE expiry_date IS NULL;
+
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'sex_category') THEN
+        CREATE TYPE sex_category AS ENUM ('Male', 'Female');
+    END IF;
+END $$;
+
+ALTER TABLE onboarding_surveys
+ADD COLUMN sex sex_category DEFAULT 'Female';

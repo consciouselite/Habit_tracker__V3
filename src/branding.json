@@ -1,0 +1,34 @@
+{
+  "brands": {
+    "brand1": {
+      "logo": "path/to/brand1/logo.svg",
+      "colorPalette": {
+        "primary": "#007bff",
+        "secondary": "#6c757d"
+      },
+      "typography": {
+        "fontFamily": "Arial, sans-serif",
+        "fontWeight": "normal"
+      },
+      "favicon": "path/to/brand1/favicon.ico",
+      "splashScreen": "path/to/brand1/splash.png",
+      "background": "path/to/brand1/background.jpg",
+      "logoImageUrl": "path/to/brand1/logo.png",
+      "bgGradientColor": "linear-gradient(to bottom right, #4f46e5, #1e1b4b)",
+      "coachProfilePictureUrl": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=48&h=48",
+      "coachName": "Your Coach",
+      "coachHandle": "@coach",
+      "youtubeUrl": "#youtube",
+      "instagramUrl": "#instagram",
+      "whatsAppUrl": "#whatsapp",
+      "membershipUrl": "https://example.com/membership",
+      "brandedHabitTrackerName": "Habit Tracker",
+      "description": "A habit tracking app",
+      "landingPageScreenText": "Welcome to the Habit Tracker",
+      "defaultTextColor": "#333",
+      "buttonBackgroundColor": "#007bff",
+      "buttonTextColor": "#fff",
+      "visionBoardGradientColor": "linear-gradient(to right, #e0e0e0, #f0f0f0)"
+    }
+  }
+}

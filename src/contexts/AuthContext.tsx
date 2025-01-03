@@ -8,6 +8,7 @@ interface AuthContextType {
   signUp: (email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
+  updateUserMetadata: (metadata: any) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -53,12 +54,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (error) throw error;
   };
 
+  const updateUserMetadata = async (metadata: any) => {
+    if (!user) return;
+    const { data, error } = await supabase.auth.updateUser({
+      data: metadata,
+    });
+    if (error) throw error;
+    setUser(data.user);
+  };
+
   const value = {
     user,
     loading,
     signUp,
     signIn,
     signOut,
+    updateUserMetadata,
   };
 
   return (
@@ -73,5 +84,5 @@ export function useAuth() {
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
-  return context;
+  return { ...context, updateUserMetadata: context.updateUserMetadata };
 }
